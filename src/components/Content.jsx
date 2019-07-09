@@ -18,9 +18,9 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 
 const options = [
-    { key: 'm', text: 'TVs', value: 'male' },
-    { key: 'f', text: 'Female', value: 'female' },
-    { key: 'o', text: 'Other', value: 'other' },
+    { key: 'm', text: 'TVs', value: 'TVs' },
+    { key: 'f', text: 'Test1', value: 'Test1' },
+    { key: 'o', text: 'Test2', value: 'Test2' },
   ]
   
 class Content extends Component {
@@ -55,15 +55,15 @@ class Content extends Component {
                 <Container text style={{ marginTop: '7em', minHeight: '100vh' }}>
                     <Header as='h1'>Ontology UI</Header>
 
-                <Form>
-                    <Form.Group widths='equal'>
-                    <Form.Select fluid label='First Parameter' options={options} placeholder='First Parameter' /> 
-                    <Form.Select fluid label='Second Parameter' options={options} placeholder='Second Parameter' onChange={this.handleChange}/>
-                    </Form.Group>
-                    <Form.Button
-                    onClick={()=>this.props.getTestData(this.state.inputValue)}
-                    >Search</Form.Button>
-                </Form>
+                    <Form>
+                        <Form.Group widths='equal'>
+                        <Form.Select fluid label='First Parameter' options={options} placeholder='First Parameter' /> 
+                        <Form.Select fluid label='Second Parameter' options={options} placeholder='Second Parameter' onChange={this.handleChange}/>
+                        </Form.Group>
+                        <Form.Button
+                        onClick={()=>this.props.getTestData(this.state.inputValue)}
+                        >Search</Form.Button>
+                    </Form>
                             <Segment loading={false}>
                                
                                 <Table celled inverted selectable>

@@ -40,7 +40,7 @@ class LoginForm extends Component {
             }}
             verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h1' color='teal' textAlign='center'>
+              <Header as='h1' color='teal' textAlign='center' style={{fontSize:'50px'}}>
                 Log-in
               </Header>
               <Form size='large'>
