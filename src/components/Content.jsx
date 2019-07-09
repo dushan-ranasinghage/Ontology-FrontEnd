@@ -49,6 +49,12 @@ class Content extends Component {
                             Ontology
                         </Menu.Item>
                         <Menu.Item as='a'>Home</Menu.Item>
+                        <Menu.Menu position='right'>
+                        <Menu.Item as='a' onClick={()=>{
+                                window.history.replaceState(null, null, "/");
+                                window.location.href = '/';
+                        }}>Logout</Menu.Item>
+                        </Menu.Menu>
                     </Container>
                 </Menu>
 

@@ -9,11 +9,11 @@ export function getTestData(dropVal){
           })
           .catch(err => {
             // Mock Data Test Start
-            let mockData=[
-              {"name": "Apple X"},
-              {"name": "Samsung Galaxy S7"}
-            ]
-            dispatch({ type: 'GET_TEST', payload: mockData })
+            // let mockData=[
+            //   {"name": "Apple X"},
+            //   {"name": "Samsung Galaxy S7"}
+            // ]
+            // dispatch({ type: 'GET_TEST', payload: mockData })
             //Mock Data Test END
 
             dispatch({ type: 'GET_TEST_ERROR', payload: err.message })
