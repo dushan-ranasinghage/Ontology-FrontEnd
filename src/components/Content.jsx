@@ -29,7 +29,7 @@ class Content extends Component {
         this.handleChange = this.handleChange.bind(this)
       }
 
-    state = {}
+    state = { showTable: false }
 
     handleChange(e){
         console.log("Event Val", e.target.textContent)
@@ -61,27 +61,30 @@ class Content extends Component {
                         <Form.Select fluid label='Second Parameter' options={options} placeholder='Second Parameter' onChange={this.handleChange}/>
                         </Form.Group>
                         <Form.Button
-                        onClick={()=>this.props.getTestData(this.state.inputValue)}
+                        onClick={()=>{
+                            this.props.getTestData(this.state.inputValue)
+                            this.setState({showTable:true})
+                        }}
                         >Search</Form.Button>
                     </Form>
-                            <Segment loading={false}>
+                            {this.state.showTable == true ? <Segment loading={false}>
                                
-                                <Table celled inverted selectable>
-                                    <Table.Header>
-                                        <Table.Row>
-                                            <Table.HeaderCell>Name</Table.HeaderCell>
-                                        </Table.Row>
-                                    </Table.Header>
+                               <Table celled inverted selectable>
+                                   <Table.Header>
+                                       <Table.Row>
+                                           <Table.HeaderCell>Name</Table.HeaderCell>
+                                       </Table.Row>
+                                   </Table.Header>
 
-                                    <Table.Body>
-                                    {this.props && this.props.test && this.props.test.testlist && this.props.test.testlist.map((obj,i)=>{
-                                       return <Table.Row  key={i}>
-                                            <Table.Cell>{obj.name}</Table.Cell>
-                                        </Table.Row>
-                                    })}
-                                    </Table.Body>
-                                </Table> 
-                            </Segment> 
+                                   <Table.Body>
+                                   {this.props && this.props.test && this.props.test.testlist && this.props.test.testlist.map((obj,i)=>{
+                                      return <Table.Row  key={i}>
+                                           <Table.Cell>{obj.name}</Table.Cell>
+                                       </Table.Row>
+                                   })}
+                                   </Table.Body>
+                               </Table> 
+                           </Segment> : ''}
                 </Container>
 
 
