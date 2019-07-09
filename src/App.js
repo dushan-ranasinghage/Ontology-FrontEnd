@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import { HashRouter, Route } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import reducers from './reducers';
+
+import Login from './components/Login'
+import Content from './components/Content'
+
+// Apply Thunk middleware
+const middleware = applyMiddleware(thunk);
+// Create enhancer
+// const enhancer = compose(middleware, (window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+// Create store
+const store = createStore(reducers, middleware);
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <HashRouter>
+          <React.Fragment>
+            <Route path="/" exact component={Login} />
+            <Route path="/content/" component={Content} />
+          </React.Fragment>
+        </HashRouter>
+      </Provider>
+    );
+  }
 }
 
-export default App;
+export default App
