@@ -23,7 +23,7 @@ class LoginForm extends Component {
 
     onSubmit = () => {
         const { value1, value2 }  = this.state
-        if(value1 == 'electronics' && value2 == 'ontology'){
+        if(value1 === 'electronics' && value2 === 'ontology'){
           this.props.history.push('/content') 
         } else {
           this.setState({ err: true})
@@ -36,7 +36,7 @@ class LoginForm extends Component {
             style={{
               height: '100vh',
               marginTop: '0rem',
-              backgroundImage: "url(" + "https://wallpapercave.com/wp/OaCk2ys.jpg" + ")",
+              backgroundImage: "url(" + "https://wallpapercave.com/wp/OaCk2ys.jpg" + ")"
             }}
             verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>

@@ -2,10 +2,7 @@ import React, {Component} from 'react'
 import {
   Container,
   Divider,
-  Dropdown,
-  Grid,
   Header,
-  Image,
   List,
   Menu,
   Segment,
@@ -32,7 +29,7 @@ class Content extends Component {
     state = { showTable: false }
 
     handleChange(e){
-        console.log("Event Val", e.target.textContent)
+        // console.log("Event Val", e.target.textContent)
         this.setState({
             inputValue: e.target.textContent
           });
@@ -40,8 +37,7 @@ class Content extends Component {
 
     render() {
         console.log("Props", this.props)
-        console.log("State", this.state)
-                return (
+        return (
             <div>
                 <Menu fixed='top' inverted>
                     <Container>
@@ -73,7 +69,7 @@ class Content extends Component {
                         }}
                         >Search</Form.Button>
                     </Form>
-                            {this.state.showTable == true ? <Segment loading={false}>
+                            {(this.props && this.props.test && this.props.test.testlist && this.props.test.testlist) ? <Segment loading={false}>
                                
                                <Table celled inverted selectable>
                                    <Table.Header>
@@ -122,7 +118,6 @@ class Content extends Component {
 } 
 
 function mapStateToProps(state) {
-    console.log("dsd",state)
     return {
         test: state.test
     };
