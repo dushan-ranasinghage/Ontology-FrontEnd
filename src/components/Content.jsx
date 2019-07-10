@@ -48,7 +48,7 @@ class Content extends Component {
                 const dropData = []
                 subjectUrl.map((obj)=>{
                     let x = obj.subject.split("owl#")
-                    dropData.push({value:x[1]})
+                    dropData.push({key: x[1], text: x[1], value:x[1]})
                     console.log("Val From API", x[1])
                 })
                 this.setState({ productDrop1: dropData })
