@@ -106,8 +106,8 @@ class Content extends Component {
 
                     <Form>
                         <Form.Group widths='equal'>
-                        <Form.Select fluid label='First Parameter' options={this.state.productDrop1} placeholder='First Parameter' onChange={this.handleChange}/>
-                        <Form.Select fluid label='Second Parameter' options={options2} placeholder='Second Parameter' onChange={this.handleChange2}/>
+                        <Form.Select fluid label='Product' options={this.state.productDrop1} placeholder='First Parameter' onChange={this.handleChange1}/>
+                        <Form.Select fluid label='Brand' options={options2} placeholder='Second Parameter' onChange={this.handleChange2}/>
                         <Form.Select fluid label='Third Parameter' options={options3} placeholder='Third Parameter' onChange={this.handleChange3}/>
                         </Form.Group>
                         <Form.Button

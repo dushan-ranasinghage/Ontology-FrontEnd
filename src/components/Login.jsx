@@ -37,6 +37,7 @@ class LoginForm extends Component {
               height: '100vh',
               marginTop: '0rem',
               backgroundImage: "url(" + "https://wallpapercave.com/wp/OaCk2ys.jpg" + ")"
+              // backgroundImage: "url(" + "https://wallpapercave.com/wp/OaCk2ys.jpg" + ")"
             }}
             verticalAlign='middle'>
              
