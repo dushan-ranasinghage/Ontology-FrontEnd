@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Message, Segment, Card } from 'semantic-ui-react'
 import { withRouter } from 'react-router'
 
 class LoginForm extends Component {
@@ -39,10 +39,24 @@ class LoginForm extends Component {
               backgroundImage: "url(" + "https://wallpapercave.com/wp/OaCk2ys.jpg" + ")"
             }}
             verticalAlign='middle'>
+             
             <Grid.Column style={{ maxWidth: 450 }}>
+              
               <Header as='h1' color='teal' textAlign='center' style={{fontSize:'50px'}}>
                 Log-in
               </Header>
+              <Card
+                centered
+                style={{
+                  width:'100%'
+                }}
+                color="red"
+                header='Electronic Appliance Ontology v1.0'
+                description={[
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing,',
+                  ' elit, sed do eiusmod tempor incididunt ut labore et dolore',
+                ].join('')}
+              />
               <Form size='large'>
                 <Segment stacked>
                   <Form.Input
