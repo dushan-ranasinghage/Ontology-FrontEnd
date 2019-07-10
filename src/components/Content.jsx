@@ -129,7 +129,7 @@ class Content extends Component {
                                    <Table.Body>
                                    {this.props && this.props.test && this.props.test.testlist && this.props.test.testlist.map((obj,i)=>{
                                       return <Table.Row  key={i}>
-                                           <Table.Cell>{obj.name}</Table.Cell>
+                                           <Table.Cell>{obj.subject.split("owl#")[1]}</Table.Cell>
                                        </Table.Row>
                                    })}
                                    </Table.Body>
