@@ -48,7 +48,7 @@ class Content extends Component {
                 const dropData = []
                 subjectUrl.map((obj)=>{
                     let x = obj.subject.split("owl#")
-                    dropData.push(x[1])
+                    dropData.push({"value":x[1]})
                 })
                 this.setState({ productDrop1: dropData })
             })
