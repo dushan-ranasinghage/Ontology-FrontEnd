@@ -82,6 +82,7 @@ class Content extends Component {
 
     render() {
         console.log("Props", this.props)
+        console.log("State", this.state)
         return (
             <div>
                 <Menu fixed='top' inverted>
