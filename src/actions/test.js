@@ -1,21 +1,13 @@
 import axios from 'axios'
 
-export function getTestData(dropVal){
+export function getTestData(dropVal1,dropval2,dropval3){
   console.log("DROP VAL", dropVal)
     return (dispatch) => {
-        axios.get("http://localhost:3030/Instances?classname="+dropVal)
+        axios.get("http://localhost:3050/"+dae+"?classname="+dropVal)
           .then(res => {
             dispatch({ type: 'GET_TEST', payload: res.data })
           })
           .catch(err => {
-            // Mock Data Test Start
-            // let mockData=[
-            //   {"name": "Apple X"},
-            //   {"name": "Samsung Galaxy S7"}
-            // ]
-            // dispatch({ type: 'GET_TEST', payload: mockData })
-            //Mock Data Test END
-
             dispatch({ type: 'GET_TEST_ERROR', payload: err.message })
           })
       }

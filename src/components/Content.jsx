@@ -13,8 +13,21 @@ import { withRouter } from 'react-router'
 import { getTestData } from '../actions/index'
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
+import axios from 'axios'
 
-const options = [
+const options1 = [
+    { key: 'm', text: 'TVs', value: 'TVs' },
+    { key: 'f', text: 'Test1', value: 'Test1' },
+    { key: 'o', text: 'Test2', value: 'Test2' },
+  ]
+
+const options2 = [
+    { key: 'm', text: 'TVs', value: 'TVs' },
+    { key: 'f', text: 'Test1', value: 'Test1' },
+    { key: 'o', text: 'Test2', value: 'Test2' },
+  ]
+
+const options3 = [
     { key: 'm', text: 'TVs', value: 'TVs' },
     { key: 'f', text: 'Test1', value: 'Test1' },
     { key: 'o', text: 'Test2', value: 'Test2' },
@@ -23,15 +36,47 @@ const options = [
 class Content extends Component {
     constructor(props) {
         super(props);
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChange1 = this.handleChange1.bind(this)
+        this.handleChange2 = this.handleChange2.bind(this)
+        this.handleChange3 = this.handleChange3.bind(this)
       }
+
+    componentDidMount() {
+        axios.get("http://localhost:3050/product")
+            .then(res => {
+                let subjectUrl = res.data
+                const dropData = []
+                subjectUrl.map((obj)=>{
+                    let x = obj.subject.split("owl#")
+                    dropData.push(x[1])
+                })
+                this.setState({ productDrop1: dropData })
+            })
+            .catch(err => {
+                console.log("ERROR PRODUCT GETTING")
+            })
+    }
 
     state = { showTable: false }
 
-    handleChange(e){
+    handleChange1(e){
         // console.log("Event Val", e.target.textContent)
         this.setState({
-            inputValue: e.target.textContent
+            inputValue1: e.target.textContent
+          });
+    }    
+    
+    handleChange2(e){
+        // console.log("Event Val", e.target.textContent)
+        this.setState({
+            inputValue2: e.target.textContent
+          });
+    }    
+    
+    handleChange3(e){
+        // console.log("Event Val", e.target.textContent)
+        this.setState({
+            inputValue3: e.target.textContent
           });
     }
 
@@ -59,12 +104,13 @@ class Content extends Component {
 
                     <Form>
                         <Form.Group widths='equal'>
-                        <Form.Select fluid label='First Parameter' options={options} placeholder='First Parameter' /> 
-                        <Form.Select fluid label='Second Parameter' options={options} placeholder='Second Parameter' onChange={this.handleChange}/>
+                        <Form.Select fluid label='First Parameter' options={this.state.productDrop1} placeholder='First Parameter' onChange={this.handleChange}/>
+                        <Form.Select fluid label='Second Parameter' options={options2} placeholder='Second Parameter' onChange={this.handleChange2}/>
+                        <Form.Select fluid label='Third Parameter' options={options3} placeholder='Third Parameter' onChange={this.handleChange3}/>
                         </Form.Group>
                         <Form.Button
                         onClick={()=>{
-                            this.props.getTestData(this.state.inputValue)
+                            this.props.getTestData(this.state.inputValue1)
                             this.setState({showTable:true})
                         }}
                         >Search</Form.Button>
