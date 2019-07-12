@@ -15,34 +15,20 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import axios from 'axios'
 
-const options1 = [
-    { key: 'm', text: 'TVs', value: 'TVs' },
-    { key: 'f', text: 'Test1', value: 'Test1' },
-    { key: 'o', text: 'Test2', value: 'Test2' },
-  ]
-
-const options2 = [
-    { key: 'm', text: 'TVs', value: 'TVs' },
-    { key: 'f', text: 'Test1', value: 'Test1' },
-    { key: 'o', text: 'Test2', value: 'Test2' },
-  ]
-
-const options3 = [
-    { key: 'm', text: 'TVs', value: 'TVs' },
-    { key: 'f', text: 'Test1', value: 'Test1' },
-    { key: 'o', text: 'Test2', value: 'Test2' },
-  ]
-  
 class Content extends Component {
     constructor(props) {
         super(props);
         this.handleChange1 = this.handleChange1.bind(this)
         this.handleChange2 = this.handleChange2.bind(this)
         this.handleChange3 = this.handleChange3.bind(this)
+        this.handleChange4 = this.handleChange4.bind(this)
       }
 
       state = {
-        inputValue1: 'Replace',
+        inputValue1: 'replace',
+        inputValue2: 'replace',
+        inputValue3: 'replace',
+        inputValue4: 'replace',
         showTable: false,
         productDrop1 : [
             { key: 'No Data', text: 'No Data', value: 'No Data' }
@@ -60,6 +46,48 @@ class Content extends Component {
                     console.log("Val From API", x[1])
                 })
                 this.setState({ productDrop1: dropData })
+            })
+            .catch(err => {
+                console.log("ERROR PRODUCT GETTING")
+            })
+            axios.get("http://localhost:3050/GetCountry")
+            .then(res => {
+                let subjectUrl = res.data
+                const dropData = []
+                subjectUrl.map((obj)=>{
+                    let x = obj.subject.split("owl#")
+                    dropData.push({key: x[1], text: x[1], value:x[1]})
+                    console.log("Val From API", x[1])
+                })
+                this.setState({ productDrop2: dropData })
+            })
+            .catch(err => {
+                console.log("ERROR PRODUCT GETTING")
+            })
+            axios.get("http://localhost:3050/GetUsageType")
+            .then(res => {
+                let subjectUrl = res.data
+                const dropData = []
+                subjectUrl.map((obj)=>{
+                    let x = obj.subject.split("owl#")
+                    dropData.push({key: x[1], text: x[1], value:x[1]})
+                    console.log("Val From API", x[1])
+                })
+                this.setState({ productDrop3: dropData })
+            })
+            .catch(err => {
+                console.log("ERROR PRODUCT GETTING")
+            })
+            axios.get("http://localhost:3050/GetConsumerRate")
+            .then(res => {
+                let subjectUrl = res.data
+                const dropData = []
+                subjectUrl.map((obj)=>{
+                    let x = obj.subject.split("owl#")
+                    dropData.push({key: x[1], text: x[1], value:x[1]})
+                    console.log("Val From API", x[1])
+                })
+                this.setState({ productDrop4: dropData })
             })
             .catch(err => {
                 console.log("ERROR PRODUCT GETTING")
@@ -89,6 +117,13 @@ class Content extends Component {
           });
     }
 
+    handleChange4(e){
+        // console.log("Event Val", e.target.textContent)
+        this.setState({
+            inputValue4: e.target.textContent
+          });
+    }
+
     render() {
         console.log("Props", this.props)
         console.log("State", this.state)
@@ -113,24 +148,23 @@ class Content extends Component {
                     <Header as='h1'>Ontology UI</Header>
                     <Form>
                         <Form.Group widths='equal'>
-                        <Form.Select fluid label='Product' options={this.state.productDrop1} placeholder='First Parameter' onChange={this.handleChange1}/>
-                        <Form.Select fluid label='Brand' options={options2} placeholder='Second Parameter' onChange={this.handleChange2}/>
-                        <Form.Select fluid label='Third Parameter' options={options3} placeholder='Third Parameter' onChange={this.handleChange3}/>
+                            <Form.Select fluid label='Brand' options={this.state.productDrop1} placeholder='Brand' onChange={this.handleChange1} />
+                            <Form.Select fluid label='Country' options={this.state.productDrop2} placeholder='Country' onChange={this.handleChange2} />
+                            <Form.Select fluid label='UsageType' options={this.state.productDrop3} placeholder='Type' onChange={this.handleChange3} />
+                            <Form.Select fluid label='ConsumerRating' options={this.state.productDrop4} placeholder='Rate' onChange={this.handleChange4} />
                         </Form.Group>
                         <Form.Button
-                        onClick={()=>{
-                            this.props.getTestData(this.state.inputValue1)
-                            this.setState({showTable:true})
-                        }}
+                            onClick={() => {
+                                this.props.getTestData(this.state.inputValue1, this.state.inputValue2, this.state.inputValue3, this.state.inputValue4)
+                                this.setState({ showTable: true })
+                            }}
                         >Search</Form.Button>
                     </Form>
                            <Segment loading={false}>
                                <Table celled inverted selectable>
                                    <Table.Header>
                                        <Table.Row>
-                                           <Table.HeaderCell>Name</Table.HeaderCell>
-                                           <Table.HeaderCell>Test1</Table.HeaderCell>
-                                           <Table.HeaderCell>Test2</Table.HeaderCell>
+                                           <Table.HeaderCell>Product Name</Table.HeaderCell>
                                        </Table.Row>
                                    </Table.Header>
 
@@ -140,8 +174,6 @@ class Content extends Component {
                                            <Table.Cell>{obj.subject.split("owl#")[1]}</Table.Cell>
                                        </Table.Row>
                                    }): <Table.Row >
-                                   <Table.Cell>No Data</Table.Cell>
-                                   <Table.Cell>No Data</Table.Cell>
                                    <Table.Cell>No Data</Table.Cell>
                                </Table.Row>}
                                    </Table.Body>

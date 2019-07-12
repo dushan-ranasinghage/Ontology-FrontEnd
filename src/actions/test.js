@@ -1,9 +1,9 @@
 import axios from 'axios'
 
-export function getTestData(dropVal1){
+export function getTestData(dropVal1, dropVal2, dropVal3, dropVal4){
   console.log("DROP VAL", dropVal1)
     return (dispatch) => {
-        axios.get("http://localhost:3050/GetSearch/"+dropVal1)
+        axios.get("http://localhost:3050/GetSearch/"+dropVal1+"/"+dropVal2+"/"+dropVal3+"/"+dropVal4)
           .then(res => {
             dispatch({ type: 'GET_TEST', payload: res.data })
           })
