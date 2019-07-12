@@ -109,7 +109,7 @@ class Content extends Component {
                     </Container>
                 </Menu>
 
-                <Container text style={{ marginTop: '7em', minHeight: '100vh', maxWidth: '1100px !important' }}>
+                <Container text style={{ marginTop: '7em', minHeight: '100vh', minWidth: '1100px' }}>
                     <Header as='h1'>Ontology UI</Header>
 
                     <Form>
@@ -125,24 +125,30 @@ class Content extends Component {
                         }}
                         >Search</Form.Button>
                     </Form>
-                            {(this.props && this.props.test && this.props.test.testlist && this.props.test.testlist) ? <Segment loading={false}>
+                           <Segment loading={false}>
                                
                                <Table celled inverted selectable>
                                    <Table.Header>
                                        <Table.Row>
                                            <Table.HeaderCell>Name</Table.HeaderCell>
+                                           <Table.HeaderCell>Test1</Table.HeaderCell>
+                                           <Table.HeaderCell>Test2</Table.HeaderCell>
                                        </Table.Row>
                                    </Table.Header>
 
                                    <Table.Body>
-                                   {this.props && this.props.test && this.props.test.testlist && this.props.test.testlist.map((obj,i)=>{
+                                   {this.props && this.props.test && this.props.test.testlist && this.props.test.testlist ? this.props && this.props.test && this.props.test.testlist && this.props.test.testlist.map((obj,i)=>{
                                       return <Table.Row  key={i}>
                                            <Table.Cell>{obj.subject.split("owl#")[1]}</Table.Cell>
                                        </Table.Row>
-                                   })}
+                                   }): <Table.Row >
+                                   <Table.Cell>No Data</Table.Cell>
+                                   <Table.Cell>No Data</Table.Cell>
+                                   <Table.Cell>No Data</Table.Cell>
+                               </Table.Row>}
                                    </Table.Body>
                                </Table> 
-                           </Segment> : ''}
+                           </Segment> 
                 </Container>
 
 
