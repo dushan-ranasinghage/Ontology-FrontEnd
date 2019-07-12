@@ -208,7 +208,7 @@ class Content extends Component {
                                 Privacy Policy
                             </List.Item>
                         </List>
-                        <center>Designed By: dExTeR</center>
+                        {/* <center>Designed By: dExTeR</center> */}
                     </Container>
                 </Segment>
             </div>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export function getTestData(dropVal1, dropVal2, dropVal3, dropVal4){
-  console.log("DROP VAL", dropVal1)
+  console.log("DROP VAL", dropVal1, dropVal2, dropVal3, dropVal4)
     return (dispatch) => {
         axios.get("http://localhost:3050/GetSearch/"+dropVal1+"/"+dropVal2+"/"+dropVal3+"/"+dropVal4)
           .then(res => {
