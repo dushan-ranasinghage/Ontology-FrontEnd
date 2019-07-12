@@ -216,6 +216,10 @@ class Content extends Component {
                             <List.Item as='a' href='#'>
                                 Privacy Policy
                             </List.Item>
+                            <List.Item as='a' href='#'>
+                            <small>&copy; Copyright 2019, dExTeR</small>
+                            </List.Item>
+
                         </List>
                         {/* <center>Designed By: dExTeR</center> */}
                     </Container>
