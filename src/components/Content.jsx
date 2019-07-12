@@ -32,6 +32,15 @@ class Content extends Component {
         showTable: false,
         productDrop1 : [
             { key: 'No Data', text: 'No Data', value: 'No Data' }
+          ],
+        productDrop2 : [
+            { key: 'No Data', text: 'No Data', value: 'No Data' }
+          ],
+        productDrop3 : [
+            { key: 'No Data', text: 'No Data', value: 'No Data' }
+          ],
+        productDrop4 : [
+            { key: 'No Data', text: 'No Data', value: 'No Data' }
           ]
       }
 

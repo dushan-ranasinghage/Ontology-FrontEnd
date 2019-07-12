@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 } */
+
+.ui.form [class*="equal width"].fields>.field, .ui[class*="equal width"].form .fields>.field {
+  width: 100%;
+  flex: 1 1 auto;
+  font-size: large;
+}
