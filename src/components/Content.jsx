@@ -50,7 +50,7 @@ class Content extends Component {
       }
 
     componentDidMount() {
-        axios.get("http://localhost:3050/product")
+        axios.get("http://localhost:3050/GetBrand")
             .then(res => {
                 let subjectUrl = res.data
                 const dropData = []
@@ -111,7 +111,6 @@ class Content extends Component {
 
                 <Container text style={{ marginTop: '7em', minHeight: '100vh', minWidth: '1100px' }}>
                     <Header as='h1'>Ontology UI</Header>
-
                     <Form>
                         <Form.Group widths='equal'>
                         <Form.Select fluid label='Product' options={this.state.productDrop1} placeholder='First Parameter' onChange={this.handleChange1}/>
@@ -126,7 +125,6 @@ class Content extends Component {
                         >Search</Form.Button>
                     </Form>
                            <Segment loading={false}>
-                               
                                <Table celled inverted selectable>
                                    <Table.Header>
                                        <Table.Row>
@@ -152,11 +150,18 @@ class Content extends Component {
                 </Container>
 
 
-                <Segment inverted vertical style={{ margin: '2em 0em 0em', padding: '2em 0em' }}>
+                <Segment inverted vertical style={{ 
+                    margin: '1em 0em 0em', 
+                    padding: '1em 0em',
+                    width: '100%',
+                    position: 'fixed',
+                    bottom: '0px'
+                    }}>
                     <Container textAlign='center'>
-                        
-                        <Divider inverted section />
-
+                        <Divider inverted section style={{
+                            marginTop: '1rem', 
+                            marginBottom: '1rem'
+                        }}/>
                         <List horizontal inverted divided link size='small'>
                             <List.Item as='a' href='#'>
                                 About Us
