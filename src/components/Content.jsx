@@ -41,6 +41,14 @@ class Content extends Component {
         this.handleChange3 = this.handleChange3.bind(this)
       }
 
+      state = {
+        inputValue1: 'Replace',
+        showTable: false,
+        productDrop1 : [
+            { key: 'No Data', text: 'No Data', value: 'No Data' }
+          ]
+      }
+
     componentDidMount() {
         axios.get("http://localhost:3050/product")
             .then(res => {
@@ -58,8 +66,6 @@ class Content extends Component {
             })
     }
 
-    state = { showTable: false }
-
     handleChange1(e){
         // console.log("Event Val", e.target.textContent)
         this.setState({
@@ -68,10 +74,12 @@ class Content extends Component {
     }    
     
     handleChange2(e){
+        debugger
         // console.log("Event Val", e.target.textContent)
         this.setState({
             inputValue2: e.target.textContent
           });
+          debugger
     }    
     
     handleChange3(e){
@@ -101,7 +109,7 @@ class Content extends Component {
                     </Container>
                 </Menu>
 
-                <Container text style={{ marginTop: '7em', minHeight: '100vh' }}>
+                <Container text style={{ marginTop: '7em', minHeight: '100vh', maxWidth: '1100px !important' }}>
                     <Header as='h1'>Ontology UI</Header>
 
                     <Form>
