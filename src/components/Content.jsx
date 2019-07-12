@@ -154,7 +154,7 @@ class Content extends Component {
                 </Menu>
 
                 <Container text style={{ marginTop: '7em', minHeight: '100vh', minWidth: '1100px' }}>
-                    <Header as='h1'>Ontology UI</Header>
+                    <Header as='h1'>Electronics Appliances Ontology</Header>
                     <Form>
                         <Form.Group widths='equal'>
                             <Form.Select fluid label='Brand' options={this.state.productDrop1} placeholder='Brand' onChange={this.handleChange1} />
