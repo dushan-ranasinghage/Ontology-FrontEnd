@@ -140,14 +140,14 @@ class Content extends Component {
     }
 
     handleChange5(e){
-        // console.log("Event Val", e.target.textContent)
+        console.log("Event Val From", e.target.textContent)
         this.setState({
             inputValue4: e.target.textContent
           });
     }
 
     handleChange6(e){
-        // console.log("Event Val", e.target.textContent)
+        console.log("Event Val To", e.target.textContent)
         this.setState({
             inputValue4: e.target.textContent
           });
