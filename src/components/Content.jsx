@@ -36,6 +36,7 @@ class Content extends Component {
         inputValue5: 'replace',
         inputValue6: 'replace',
         showTable: false,
+        reset: false,
         productDrop1 : [
             { key: 'No Data', text: 'No Data', value: 'No Data' }
           ],
@@ -58,7 +59,6 @@ class Content extends Component {
                 subjectUrl.map((obj)=>{
                     let x = obj.subject.split("owl#")
                     dropData.push({key: x[1], text: x[1], value:x[1]})
-                    console.log("Val From API", x[1])
                 })
                 this.setState({ productDrop1: dropData })
             })
@@ -72,7 +72,6 @@ class Content extends Component {
                 subjectUrl.map((obj)=>{
                     let x = obj.subject.split("owl#")
                     dropData.push({key: x[1], text: x[1], value:x[1]})
-                    console.log("Val From API", x[1])
                 })
                 this.setState({ productDrop2: dropData })
             })
@@ -86,7 +85,6 @@ class Content extends Component {
                 subjectUrl.map((obj)=>{
                     let x = obj.subject.split("owl#")
                     dropData.push({key: x[1], text: x[1], value:x[1]})
-                    console.log("Val From API", x[1])
                 })
                 this.setState({ productDrop3: dropData })
             })
@@ -100,7 +98,6 @@ class Content extends Component {
                 subjectUrl.map((obj)=>{
                     let x = obj.subject.split("owl#")
                     dropData.push({key: x[1], text: x[1], value:x[1]})
-                    console.log("Val From API", x[1])
                 })
                 this.setState({ productDrop4: dropData })
             })
@@ -140,22 +137,22 @@ class Content extends Component {
     }
 
     handleChange5(e){
-        console.log("Event Val From", e.target.textContent)
+        // console.log("Event Val From", e.target.textContent)
         this.setState({
             inputValue5: e.target.value
           });
     }
 
     handleChange6(e){
-        console.log("Event Val To", e.target.textContent)
+        // console.log("Event Val To", e.target.textContent)
         this.setState({
             inputValue6: e.target.value
           });
     }
 
     render() {
-        console.log("Props", this.props)
-        console.log("State", this.state)
+        // console.log("Props", this.props)
+        // console.log("State", this.state)
         return (
             <div>
                 <Menu fixed='top' inverted>
@@ -208,7 +205,9 @@ class Content extends Component {
                                 this.setState({ showTable: true })
                             }}
                         >Search</Button>
-                        <Button secondary>
+                        <Button secondary
+                        onClick={()=>window.location.reload()}
+                        >
                             Reset
                         </Button>
                     </Form>
