@@ -8,7 +8,8 @@ import {
   Segment,
   Form,
   Table,
-  Grid
+  Grid,
+  Button
 } from 'semantic-ui-react'
 import { withRouter } from 'react-router'
 import { getTestData } from '../actions/index'
@@ -204,12 +205,15 @@ class Content extends Component {
                         </Grid>
 
                       
-                        <Form.Button
+                        <Button
                             onClick={() => {
                                 this.props.getTestData(this.state.inputValue1, this.state.inputValue2, this.state.inputValue3, this.state.inputValue4, this.state.inputValue5, this.state.inputValue6)
                                 this.setState({ showTable: true })
                             }}
-                        >Search</Form.Button>
+                        >Search</Button>
+                        <Button secondary>
+                            Reset
+                        </Button>
                     </Form>
                            <Segment loading={false}>
                                <Table celled inverted selectable>
