@@ -43,7 +43,13 @@ class LoginForm extends Component {
              
             <Grid.Column style={{ maxWidth: 450 }}>
               
-              <Header as='h1' textAlign='center' style={{fontSize:'50px', backgroundColor:'#fff', color: '#767676', borderRadius:'15px'}}>
+              <Header as='h1' textAlign='center' style={{
+                fontSize:'50px', 
+                backgroundColor:'#fff', 
+                color: '#767676', 
+                borderRadius:'.28571429rem',
+                boxShadow: '0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5'
+                }}>
                 Log-in
               </Header>
               <Card
@@ -51,11 +57,9 @@ class LoginForm extends Component {
                 style={{
                   width:'100%'
                 }}
-                color="red"
-                header='Electronic Appliance Ontology v1.0'
+                header='Electronic Appliance Ontology v6.0'
                 description={[
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing,',
-                  ' elit, sed do eiusmod tempor incididunt ut labore et dolore',
+                  'Semantic Web Ontology'
                 ].join('')}
               />
               <Form size='large'>
