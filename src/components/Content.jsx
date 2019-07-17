@@ -7,7 +7,8 @@ import {
   Menu,
   Segment,
   Form,
-  Table
+  Table,
+  Grid
 } from 'semantic-ui-react'
 import { withRouter } from 'react-router'
 import { getTestData } from '../actions/index'
@@ -22,6 +23,8 @@ class Content extends Component {
         this.handleChange2 = this.handleChange2.bind(this)
         this.handleChange3 = this.handleChange3.bind(this)
         this.handleChange4 = this.handleChange4.bind(this)
+        this.handleChange5 = this.handleChange5.bind(this)
+        this.handleChange6 = this.handleChange6.bind(this)
       }
 
       state = {
@@ -29,6 +32,8 @@ class Content extends Component {
         inputValue2: 'replace',
         inputValue3: 'replace',
         inputValue4: 'replace',
+        inputValue5: 'replace',
+        inputValue6: 'replace',
         showTable: false,
         productDrop1 : [
             { key: 'No Data', text: 'No Data', value: 'No Data' }
@@ -133,6 +138,20 @@ class Content extends Component {
           });
     }
 
+    handleChange5(e){
+        // console.log("Event Val", e.target.textContent)
+        this.setState({
+            inputValue4: e.target.textContent
+          });
+    }
+
+    handleChange6(e){
+        // console.log("Event Val", e.target.textContent)
+        this.setState({
+            inputValue4: e.target.textContent
+          });
+    }
+
     render() {
         console.log("Props", this.props)
         console.log("State", this.state)
@@ -162,9 +181,32 @@ class Content extends Component {
                             <Form.Select fluid label='UsageType' options={this.state.productDrop3} placeholder='Type' onChange={this.handleChange3} />
                             <Form.Select fluid label='ConsumerRating' options={this.state.productDrop4} placeholder='Rate' onChange={this.handleChange4} />
                         </Form.Group>
+
+                        <Grid divided='vertically'>
+                            <Grid.Row columns={2}>
+                                <Grid.Column>
+                                    <Form.Group widths='equal'>
+                                        <Form.Field onChange={this.handleChange5}>
+                                            <label>Price: From (Rs.)</label>
+                                            <input placeholder='Rs.' />
+                                        </Form.Field>
+                                        <Form.Field onChange={this.handleChange6}>
+                                            <label>To (Rs.)</label>
+                                            <input placeholder='Rs.' />
+                                        </Form.Field>
+                                    </Form.Group>
+                                </Grid.Column>
+                                <Grid.Column>
+
+                                </Grid.Column>
+                            </Grid.Row>
+
+                        </Grid>
+
+                      
                         <Form.Button
                             onClick={() => {
-                                this.props.getTestData(this.state.inputValue1, this.state.inputValue2, this.state.inputValue3, this.state.inputValue4)
+                                this.props.getTestData(this.state.inputValue1, this.state.inputValue2, this.state.inputValue3, this.state.inputValue4, this.state.inputValue5, this.state.inputValue6)
                                 this.setState({ showTable: true })
                             }}
                         >Search</Form.Button>
@@ -174,6 +216,7 @@ class Content extends Component {
                                    <Table.Header>
                                        <Table.Row>
                                            <Table.HeaderCell>Product Name</Table.HeaderCell>
+                                           <Table.HeaderCell>Price</Table.HeaderCell>
                                        </Table.Row>
                                    </Table.Header>
 
@@ -181,8 +224,10 @@ class Content extends Component {
                                    {this.props && this.props.test && this.props.test.testlist && this.props.test.testlist ? this.props && this.props.test && this.props.test.testlist && this.props.test.testlist.map((obj,i)=>{
                                       return <Table.Row  key={i}>
                                            <Table.Cell>{obj.subject.split("owl#")[1]}</Table.Cell>
+                                           <Table.Cell>{obj.price}</Table.Cell>
                                        </Table.Row>
                                    }): <Table.Row >
+                                   <Table.Cell>No Data</Table.Cell>
                                    <Table.Cell>No Data</Table.Cell>
                                </Table.Row>}
                                    </Table.Body>
@@ -217,9 +262,8 @@ class Content extends Component {
                                 Privacy Policy
                             </List.Item>
                             <List.Item as='a' href='#'>
-                            <small>&copy; Copyright 2019, dExTeR</small>
+                                <small>&copy; Copyright 2019, dExTeR</small>
                             </List.Item>
-
                         </List>
                         {/* <center>Designed By: dExTeR</center> */}
                     </Container>

@@ -36,14 +36,14 @@ class LoginForm extends Component {
             style={{
               height: '100vh',
               marginTop: '0rem',
-              backgroundImage: "url(" + "https://wallpapercave.com/wp/OaCk2ys.jpg" + ")"
+              backgroundImage: "url(" + "https://www.electronicsb2b.com/wp-content/uploads/2018/01/04-zs-home_appliances_111-ab.jpg" + ")"
               // backgroundImage: "url(" + "https://wallpapercave.com/wp/OaCk2ys.jpg" + ")"
             }}
             verticalAlign='middle'>
              
             <Grid.Column style={{ maxWidth: 450 }}>
               
-              <Header as='h1' color='teal' textAlign='center' style={{fontSize:'50px'}}>
+              <Header as='h1' textAlign='center' style={{fontSize:'50px', backgroundColor:'#fff', color: '#767676', borderRadius:'15px'}}>
                 Log-in
               </Header>
               <Card
@@ -76,7 +76,11 @@ class LoginForm extends Component {
                     onChange={this.handleChange2}
                     type='password'
                   />
-                  <Button color='teal' fluid size='large'
+                  <Button fluid size='large'
+                  style={{
+                    backgroundColor: '#767676',
+                    color:'#fff'
+                  }}
                     onClick={this.onSubmit}
                   >
                     Login
