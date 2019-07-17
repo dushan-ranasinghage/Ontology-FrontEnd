@@ -198,13 +198,10 @@ class Content extends Component {
                                     </Form.Group>
                                 </Grid.Column>
                                 <Grid.Column>
-
                                 </Grid.Column>
                             </Grid.Row>
-
                         </Grid>
-
-                      
+                        
                         <Button
                             onClick={() => {
                                 this.props.getTestData(this.state.inputValue1, this.state.inputValue2, this.state.inputValue3, this.state.inputValue4, this.state.inputValue5, this.state.inputValue6)
@@ -244,7 +241,6 @@ class Content extends Component {
                     margin: '1em 0em 0em', 
                     padding: '1em 0em',
                     width: '100%',
-                    position: 'fixed',
                     bottom: '0px'
                     }}>
                     <Container textAlign='center'>
@@ -266,10 +262,9 @@ class Content extends Component {
                                 Privacy Policy
                             </List.Item>
                             <List.Item as='a' href='#'>
-                                <small>&copy; Copyright 2019, dExTeR</small>
+                                <small>&copy; Powered By FIT 15</small>
                             </List.Item>
                         </List>
-                        {/* <center>Designed By: dExTeR</center> */}
                     </Container>
                 </Segment>
             </div>
